@@ -21,18 +21,23 @@ public class PlayerController : MonoBehaviour
     private PlayerPhysics _physics;
     private Vector3 _restartPoint;
 
+    private tk2dSprite _sprite;
+
 	// Use this for initialization
 	void Start()
 	{
 	    _physics = GetComponent<PlayerPhysics>();
 	    _restartPoint = transform.position;
+        _sprite = GetComponent<tk2dSprite>();
 	}
 	
 	// Update is called once per frame
 	void Update()
 	{
+        if (_physics.stopMovement)
+            _targetSpeed = _currentSpeed = 0.0f;
 	    _targetSpeed = Input.GetAxis("Horizontal")*speed;
-	    _currentSpeed = _targetSpeed;//IncrementTowards(_currentSpeed, _targetSpeed, acceleration);
+	    _currentSpeed = IncrementTowards(_currentSpeed, _targetSpeed, acceleration);
 
         if (_physics.grounded || _canJump)
         {
@@ -43,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
         _amountToMove.x = _currentSpeed;
         _amountToMove.y -= gravity * Time.deltaTime;
+        if (Input.GetAxis("Horizontal") < 0) _sprite.FlipX = true;
+        else if (Input.GetAxis("Horizontal") > 0) _sprite.FlipX = false;
         _physics.Move(_amountToMove * Time.deltaTime);
 	}
 
@@ -88,7 +95,7 @@ public class PlayerController : MonoBehaviour
     {
         if (n == target) return n;
         float dir = Mathf.Sign(target - n);
-        n += speed * Time.deltaTime * dir;
+        n += a * Time.deltaTime * dir;
         return (dir == Mathf.Sign(target - n) ? n : target);
     }
 }

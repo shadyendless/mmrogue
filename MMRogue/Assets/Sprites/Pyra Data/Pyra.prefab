@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: Pyra
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d546f34a90531a14eaba82a43b05b86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 3
+  materialIdsValid: 1
+  needMaterialInstance: 0
+  spriteDefinitions:
+  - name: pyra_128
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 4, y: 4, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 4, y: 4, z: 0}
+    texelSize: {x: .03125, y: .03125}
+    positions:
+    - {x: -2, y: -2, z: 0}
+    - {x: 2, y: -2, z: 0}
+    - {x: -2, y: 2, z: 0}
+    - {x: 2, y: 2, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .00781640597, y: .00781640597}
+    - {x: .507808566, y: .00781640597}
+    - {x: .00781640597, y: .507808566}
+    - {x: .507808566, y: .507808566}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 7c53c977497b4ae4fa5acdddd7d1321d, type: 2}
+    materialId: 0
+    sourceTextureGUID: af37f6f568896504580f93c9fc3d0549
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    colliderType: 0
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+  - name: pyrapx64
+    boundsData:
+    - {x: -.0625, y: 1, z: 0}
+    - {x: 1.0625, y: 1.9375, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 1, z: 0}
+    - {x: 2, y: 2, z: 0}
+    texelSize: {x: .03125, y: .03125}
+    positions:
+    - {x: -.59375, y: .03125, z: 0}
+    - {x: .46875, y: .03125, z: 0}
+    - {x: -.59375, y: 1.96875, z: 0}
+    - {x: .46875, y: 1.96875, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .00781640597, y: .523441434}
+    - {x: .140621096, y: .523441434}
+    - {x: .00781640597, y: .765621066}
+    - {x: .140621096, y: .765621066}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 7c53c977497b4ae4fa5acdddd7d1321d, type: 2}
+    materialId: 0
+    sourceTextureGUID: cd721db0317a5d241a90e3c1e5fdd025
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    colliderType: 2
+    colliderVertices:
+    - {x: -.0625, y: 1, z: 0}
+    - {x: .53125, y: .96875, z: .100000001}
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+  premultipliedAlpha: 0
+  material: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: 7c53c977497b4ae4fa5acdddd7d1321d, type: 2}
+  textures:
+  - {fileID: 2800000, guid: 1c9e77a035314a645814ae6bcf7e3439, type: 3}
+  allowMultipleAtlases: 0
+  spriteCollectionGUID: f1da83a83e1e8df4aa17d5cc8ebfbe1a
+  spriteCollectionName: Pyra
+  assetName: 
+  loadable: 0
+  invOrthoSize: .100000001
+  halfTargetHeight: 320
+  buildKey: 2086411728
+  dataGuid: 07a696a402471d941bdd94e9be3dcf35
+  managedSpriteCollection: 0
+  hasPlatformData: 0
+  spriteCollectionPlatforms: []
+  spriteCollectionPlatformGUIDs: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

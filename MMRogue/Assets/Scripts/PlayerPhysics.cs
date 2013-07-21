@@ -7,7 +7,7 @@ public class PlayerPhysics : MonoBehaviour
     public LayerMask collisionMask;
 
     [HideInInspector] public bool grounded;
-    public bool isOnWall;
+    [HideInInspector] public bool stopMovement;
 
     private BoxCollider _collider;
     private Vector3 _s;
@@ -55,12 +55,11 @@ public class PlayerPhysics : MonoBehaviour
                     deltaY = 0;
 
                 grounded = true;
-                isOnWall = false;
                 break;
             }
         }
 
-        isOnWall = false;
+        stopMovement = false;
         // Left and right collisions
         for (int i = 0; i < 3; ++i)
         {
@@ -79,8 +78,7 @@ public class PlayerPhysics : MonoBehaviour
                     deltaX = dist * dir + _skin * dir * -1;
                 else
                     deltaX = 0;
-                isOnWall = true;
-                grounded = false;
+                stopMovement = true;
                 break;
             }
         }
@@ -90,7 +88,7 @@ public class PlayerPhysics : MonoBehaviour
         Vector3 o = new Vector3(p.x + _c.x + _s.x / 2.0f * Mathf.Sign(deltaX), 
                                 p.y + _c.y + _s.y / 2.0f * Mathf.Sign(deltaY));
         _ray = new Ray(o, playerDir.normalized);
-        if (!grounded && !isOnWall)
+        if (!grounded && !stopMovement)
         {
             if (Physics.Raycast(_ray, out _hit, Mathf.Sqrt(deltaX*deltaX + deltaY*deltaY), collisionMask))
             {

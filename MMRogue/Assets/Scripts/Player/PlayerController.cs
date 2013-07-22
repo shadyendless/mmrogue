@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 8.0f;
     public float timeToJump = 0.01f;
 
+    public bool _canMove = true;
     private float _currentSpeed;
     private float _targetSpeed;
     private bool _canJump;
@@ -34,6 +35,9 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+        if (!_canMove)
+            return;
+
         if (_physics.stopMovement)
             _targetSpeed = _currentSpeed = 0.0f;
 	    _targetSpeed = Input.GetAxis("Horizontal")*speed;

@@ -35,7 +35,7 @@ public class PlayerPhysics : MonoBehaviour
         float y = 0.0f;
         float dir = 0.0f;
         Vector2 p = transform.position;
-
+        Debug.Log("Moving");
         // Up and down collisions.
         grounded = false;
         for (int i = 0; i < 4; ++i)

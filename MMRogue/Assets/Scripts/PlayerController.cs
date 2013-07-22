@@ -39,29 +39,39 @@ public class PlayerController : MonoBehaviour
 	    _targetSpeed = Input.GetAxis("Horizontal")*speed;
 	    _currentSpeed = IncrementTowards(_currentSpeed, _targetSpeed, acceleration);
 
-        if (_physics.grounded || _canJump)
-        {
-            _amountToMove.y = Jump();// +(gravity * Time.deltaTime);
-        }
 	    if (Input.GetButtonDown("Back"))
 	        transform.position = _restartPoint;
 
+        if (Input.GetButtonDown("Start"))
+            Debug.Break();
+
         _amountToMove.x = _currentSpeed;
-        _amountToMove.y -= gravity * Time.deltaTime;
+        if (!_physics.onMovingPlatform) _amountToMove.y -= gravity * Time.deltaTime;
+
         if (Input.GetAxis("Horizontal") < 0) _sprite.FlipX = true;
         else if (Input.GetAxis("Horizontal") > 0) _sprite.FlipX = false;
         _physics.Move(_amountToMove * Time.deltaTime);
 	}
 
+    void LateUpdate()
+    {
+        if (_physics.onMovingPlatform || _canJump || _physics.grounded)
+        {
+            _amountToMove.y = Jump();// +(gravity * Time.deltaTime);
+        }
+    }
+
     private float Jump()
     {
         float currentHeight = 0.0f;
         float jumpRatio = 0.0f;
-        if (Input.GetButtonDown("Jump") && _physics.grounded)
+
+        if (Input.GetButtonDown("Jump") && (_physics.grounded || _physics.onMovingPlatform))
         {
             _jumpStart = Time.time;
             _canJump = true;
             _physics.grounded = false;
+            _physics.onMovingPlatform = false;
         }
 
         if (Input.GetButton("Jump") && _canJump)
@@ -84,6 +94,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
         {
             _physics.grounded = false;
+            _physics.onMovingPlatform = false;
             currentHeight = 0.0f;
             _canJump = false;
         }

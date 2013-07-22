@@ -21,7 +21,7 @@ MonoBehaviour:
     dataGUID: 
     managed: 0
     loadable: 0
-  - assetGUID: cb6c70ebffd3bfe489fbf3e013ac91fc
+  - assetGUID: 0083ff64a2bda8b4d946bcf73baca7c1
     dataGUID: 
     managed: 0
     loadable: 0
@@ -442,14 +442,29 @@ MonoBehaviour:
     spriteCollectionGUID: f1da83a83e1e8df4aa17d5cc8ebfbe1a
     spriteCollectionDataGUID: 07a696a402471d941bdd94e9be3dcf35
     spriteNames:
-    - pyra_128
+    - pyra_idle_03
     - pyrapx64
+    - pyra_idle_01
+    - pyra_idle_00
+    - pyra_idle_05
+    - pyra_idle_02
+    - pyra_idle_04
     spriteTextureGUIDs:
-    - af37f6f568896504580f93c9fc3d0549
+    - 164f1aa06ca15334ea1457402d9d001c
     - cd721db0317a5d241a90e3c1e5fdd025
+    - 3687acaf9af823b44a461c7a9f534860
+    - 5bcb51bc3301e5442a146611a18b3c88
+    - 9da646314b1969e4fac54989d2347e80
+    - d903d91cf39392c4c82c5ff0a770a192
+    - f34d832aa2a40a14b9f40d91ec62623d
     spriteTextureTimeStamps:
-    - 1374268544.58483
+    - 1374413137.62033
     - 1374269782.56951
+    - 1374413137.65335
+    - 1374413137.64434
+    - 1374413137.63734
+    - 1374413137.66135
+    - 1374413137.62833
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

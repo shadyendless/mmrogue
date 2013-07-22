@@ -22,6 +22,7 @@ public class MovingPlatform : MonoBehaviour
 
     private Vector3 startPos;
     private PlayerPhysics player = null;
+    private PlayerPhysics prevPlayer = null;
 
     void Start()
     {
@@ -38,8 +39,9 @@ public class MovingPlatform : MonoBehaviour
     }
 
 	// Update is called once per frame
-	void Update ()
-	{
+	void Update()
+    {
+        if (player != null ) prevPlayer = player;
         player = null;
         for (int i = 0; i < 4; ++i)
         {
@@ -51,12 +53,16 @@ public class MovingPlatform : MonoBehaviour
             _ray = new Ray(new Vector2(x, y), new Vector2(0, dir));
             Debug.DrawRay(_ray.origin, _ray.direction);
 
-            if (Physics.Raycast(_ray, out _hit, 1, collisionMask))
+            if (Physics.Raycast(_ray, out _hit, 0.15f, collisionMask))
             {
                 player = _hit.collider.gameObject.GetComponent<PlayerPhysics>();
-                player.grounded = true;
                 break;
             }
+        }
+
+        if (player == null && prevPlayer != null)
+        {
+            prevPlayer.onMovingPlatform = false;
         }
 
 	    Vector3 translateVector = Vector3.zero;
@@ -89,6 +95,7 @@ public class MovingPlatform : MonoBehaviour
 	        }
 	        else
 	        {
+                if (player != null) player.onMovingPlatform = false;
 	            if (transform.position.y > startPos.y)
                     translateVector += -Vector3.up * velocity * Time.deltaTime;
 	            else
@@ -96,8 +103,15 @@ public class MovingPlatform : MonoBehaviour
 	        }
 	    }
 
-	    transform.Translate(translateVector, Space.World);
-        translateVector += new Vector3(0.0f, 0.001f);
-        if (player != null) player.Move(translateVector);
+        if (goingUp)
+        {
+            if (player != null) player.Move(translateVector);
+            transform.Translate(translateVector, Space.World);
+        }
+        else
+        {
+            transform.Translate(translateVector, Space.World);
+            if (player != null) player.Move(translateVector + new Vector3(0.0f, 0.001f));
+        }
 	}
 }

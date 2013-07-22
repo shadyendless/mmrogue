@@ -469,3 +469,16 @@ MonoBehaviour:
     loadable: 0
     assetName: 
     version: 3
+  - name: Backgrounds
+    spriteCollectionGUID: 64dffdbf3dc1de344a7f8f07ffa70309
+    spriteCollectionDataGUID: 73eb51d5deb422d4d8e731aef3553849
+    spriteNames:
+    - star-space-tile
+    spriteTextureGUIDs:
+    - fcdb9d4fa6a618242b08254253a969d2
+    spriteTextureTimeStamps:
+    - 1374439955.40697
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3

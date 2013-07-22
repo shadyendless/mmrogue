@@ -7,7 +7,8 @@ public class PlayerPhysics : MonoBehaviour
     public LayerMask collisionMask;
 
     public bool grounded;
-    [HideInInspector] public bool stopMovement;
+    [HideInInspector]
+    public bool stopMovement;
     public bool onMovingPlatform;
 
     private BoxCollider _collider;
@@ -40,17 +41,17 @@ public class PlayerPhysics : MonoBehaviour
         for (int i = 0; i < 4; ++i)
         {
             dir = Mathf.Sign(deltaY);
-            x = (p.x + _c.x  - _s.x / 2.0f) + _s.x / 3.0f * i;
+            x = (p.x + _c.x - _s.x / 2.0f) + _s.x / 3.0f * i;
             y = p.y + _c.y + _s.y / 2.0f * dir;
 
             _ray = new Ray(new Vector2(x, y), new Vector2(0, dir));
-            Debug.DrawRay(_ray.origin, _ray.direction);;
+            Debug.DrawRay(_ray.origin, _ray.direction); ;
             if (Physics.Raycast(_ray, out _hit, Mathf.Abs(deltaY) + _skin, collisionMask))
             {
                 float dist = Vector3.Distance(_ray.origin, _hit.point);
 
                 if (dist > _skin)
-                    deltaY = dist*dir + _skin*dir*-1;
+                    deltaY = dist * dir + _skin * dir * -1;
                 else
                     deltaY = 0;
 
@@ -94,12 +95,12 @@ public class PlayerPhysics : MonoBehaviour
 
         // Check the direction of the player.
         Vector3 playerDir = new Vector3(deltaX, deltaY);
-        Vector3 o = new Vector3(p.x + _c.x + _s.x / 2.0f * Mathf.Sign(deltaX), 
+        Vector3 o = new Vector3(p.x + _c.x + _s.x / 2.0f * Mathf.Sign(deltaX),
                                 p.y + _c.y + _s.y / 2.0f * Mathf.Sign(deltaY));
         _ray = new Ray(o, playerDir.normalized);
         if (!grounded && !stopMovement)
         {
-            if (Physics.Raycast(_ray, out _hit, Mathf.Sqrt(deltaX*deltaX + deltaY*deltaY), collisionMask))
+            if (Physics.Raycast(_ray, out _hit, Mathf.Sqrt(deltaX * deltaX + deltaY * deltaY), collisionMask))
             {
                 grounded = true;
                 deltaY = 0.0f;

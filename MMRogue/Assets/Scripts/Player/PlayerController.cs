@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 	    _restartPoint = transform.position;
         _sprite = GetComponent<tk2dSprite>();
 	}
-	
+
 	// Update is called once per frame
 	void Update()
 	{

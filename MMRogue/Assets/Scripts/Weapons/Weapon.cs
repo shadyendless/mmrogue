@@ -6,6 +6,8 @@ public class Weapon : MonoBehaviour
 {
     public Transform myProjectile;
     public float timeBetweenShots = 0.5f;
+    public float angleOfFire = 90.0f;
+    public int numProjectiles = 3;
     public Transform BL;
     public Transform BR;
     public Transform CL;
@@ -16,9 +18,11 @@ public class Weapon : MonoBehaviour
 
     private Vector2 _fireDirection;
     private Dictionary<Vector2, Transform> _fireRotations;
+    private float _angleBetweenProjectiles;
 
     void Start()
     {
+        _angleBetweenProjectiles = angleOfFire / (numProjectiles - 1);
         _fireRotations = new Dictionary<Vector2, Transform>();
         _fireRotations.Add(new Vector2( 1, -1), BR);
         _fireRotations.Add(new Vector2( 1,  0), CR);
@@ -47,8 +51,16 @@ public class Weapon : MonoBehaviour
         {
             if (_fireRotations.ContainsKey(_fireDirection))
             {
-                Instantiate(myProjectile, _fireRotations[_fireDirection].position, 
-                                          _fireRotations[_fireDirection].rotation);
+                float currentRotation = 0.0f;
+
+                for (int i = 0; i < numProjectiles; ++i)
+                {
+                    currentRotation = (angleOfFire / 2) - _angleBetweenProjectiles * i;
+                    //rotModifier.y += currentRotation;
+                    Instantiate(myProjectile, _fireRotations[_fireDirection].position,
+                                            Quaternion.Euler(new Vector3(0f, 0f, currentRotation) + _fireRotations[_fireDirection].rotation.eulerAngles));
+                }
+
                 yield return new WaitForSeconds(timeBetweenShots);
             }
             else

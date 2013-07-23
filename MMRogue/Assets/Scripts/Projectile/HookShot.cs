@@ -45,7 +45,7 @@ public class HookShot : MonoBehaviour {
             DestroyImmediate(gameObject);
         }
 
-        if (GenericInput.GetButtonDown(GenericButton.O))
+        if (GenericInput.GetButtonDown(GenericButton.O) && _hooked == true)
         {
             DestroyImmediate(gameObject);
             _hooked = false;

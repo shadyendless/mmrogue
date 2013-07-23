@@ -297,7 +297,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fac570381f34f647b768dc5a5aa1364, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: 07a696a402471d941bdd94e9be3dcf35, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
@@ -316,7 +315,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20668d0935b27d34fb855bf7d9909198, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
@@ -333,7 +331,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7c3c6ed2e5b29f4cbb468f43a051c5b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
   gravity: 35
   speed: 8
   acceleration: 50
@@ -350,7 +347,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
   library: {fileID: 11400000, guid: 0083ff64a2bda8b4d946bcf73baca7c1, type: 2}
   defaultClipId: 0
   playAutomatically: 1
@@ -365,9 +361,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d6298fc12753074abe255946ac03259, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  myProjectile: {fileID: 400000, guid: 7170a503422bce24c9a0943103737035, type: 2}
+  myProjectile: {fileID: 400000, guid: d9bc8d1411b38e246bab85fd4009a3d1, type: 2}
   timeBetweenShots: .25
+  angleOfFire: 90
+  numProjectiles: 5
   BL: {fileID: 400008}
   BR: {fileID: 400016}
   CL: {fileID: 400006}

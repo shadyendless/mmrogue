@@ -35,7 +35,6 @@ public class HookShot : MonoBehaviour {
         if (Physics.Raycast(_ray, out _hit, velocity * Time.deltaTime, collisionMask))
         {
             _point =_hit.transform.position;
-            Debug.Log("Hooked");
             _hooked = true;;
             _player.GetComponent<PlayerController>()._canMove = false;
             //DestroyImmediate(gameObject);
@@ -46,7 +45,7 @@ public class HookShot : MonoBehaviour {
             DestroyImmediate(gameObject);
         }
 
-        if ( Input.GetButton("Jump"))
+        if (GenericInput.GetButtonDown(GenericButton.O))
         {
             DestroyImmediate(gameObject);
             _hooked = false;

@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(PlayerPhysics))]
-public class PlayerController : MonoBehaviour 
+public class PlayerController : MonoBehaviour, OuyaSDK.IMenuButtonUpListener 
 {
     // Player Handling
     public float gravity = 20.0f;
@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 8.0f;
     public float timeToJump = 0.01f;
 
+    public bool _canMove = true;
     private float _currentSpeed;
     private float _targetSpeed;
     private bool _canJump;
@@ -29,27 +30,39 @@ public class PlayerController : MonoBehaviour
 	    _physics = GetComponent<PlayerPhysics>();
 	    _restartPoint = transform.position;
         _sprite = GetComponent<tk2dSprite>();
+        OuyaSDK.registerMenuButtonUpListener(this);
+        OuyaInput.SetContinuousScanning(true);
 	}
+
+    void OnDestroy()
+    {
+        OuyaSDK.unregisterMenuButtonUpListener(this);
+    }
 
 	// Update is called once per frame
 	void Update()
 	{
+	    if (!_canMove)
+	        return;
+
+        OuyaInput.UpdateControllers();
         if (_physics.stopMovement)
             _targetSpeed = _currentSpeed = 0.0f;
-	    _targetSpeed = Input.GetAxis("Horizontal")*speed;
+
+	    _targetSpeed = GenericInput.GetAxis(GenericAxis.LX) * speed;
 	    _currentSpeed = IncrementTowards(_currentSpeed, _targetSpeed, acceleration);
 
-	    if (Input.GetButtonDown("Back"))
+	    if (GenericInput.GetButtonDown(GenericButton.SELECT))
 	        transform.position = _restartPoint;
 
-        if (Input.GetButtonDown("Start"))
+        if (GenericInput.GetButtonDown(GenericButton.START))
             Debug.Break();
 
         _amountToMove.x = _currentSpeed;
         if (!_physics.onMovingPlatform) _amountToMove.y -= gravity * Time.deltaTime;
 
-        if (Input.GetAxis("Horizontal") < 0) _sprite.FlipX = true;
-        else if (Input.GetAxis("Horizontal") > 0) _sprite.FlipX = false;
+        if (GenericInput.GetAxis(GenericAxis.LX) < 0) _sprite.FlipX = true;
+        else if (GenericInput.GetAxis(GenericAxis.LX) > 0) _sprite.FlipX = false;
         _physics.Move(_amountToMove * Time.deltaTime);
 	}
 
@@ -66,7 +79,8 @@ public class PlayerController : MonoBehaviour
         float currentHeight = 0.0f;
         float jumpRatio = 0.0f;
 
-        if (Input.GetButtonDown("Jump") && (_physics.grounded || _physics.onMovingPlatform))
+        if ( (GenericInput.GetButtonDown(GenericButton.O) || GenericInput.GetButtonDown(GenericButton.R3))
+            && (_physics.grounded || _physics.onMovingPlatform))
         {
             _jumpStart = Time.time;
             _canJump = true;
@@ -74,7 +88,7 @@ public class PlayerController : MonoBehaviour
             _physics.onMovingPlatform = false;
         }
 
-        if (Input.GetButton("Jump") && _canJump)
+        if ((GenericInput.GetButton(GenericButton.O) || GenericInput.GetButton(GenericButton.R3)) && _canJump)
         {
             jumpRatio = (Time.time - _jumpStart) / timeToJump;
             if (jumpRatio > 0.6f) jumpRatio = 1.0f;
@@ -91,7 +105,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if ((GenericInput.GetButtonUp(GenericButton.O) || GenericInput.GetButtonUp(GenericButton.R3)))
         {
             _physics.grounded = false;
             _physics.onMovingPlatform = false;
@@ -108,5 +122,10 @@ public class PlayerController : MonoBehaviour
         float dir = Mathf.Sign(target - n);
         n += a * Time.deltaTime * dir;
         return (dir == Mathf.Sign(target - n) ? n : target);
+    }
+
+    public void OuyaMenuButtonUp()
+    {
+        transform.position = _restartPoint;
     }
 }

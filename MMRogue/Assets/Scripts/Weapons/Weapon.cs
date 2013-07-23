@@ -35,10 +35,10 @@ public class Weapon : MonoBehaviour
 	{
 	    _fireDirection = Vector2.zero;
 
-        _fireDirection.x = (Input.GetAxis("AimHorizontal") > 0 ? 1 :
-                            Input.GetAxis("AimHorizontal") < 0 ? -1 : 0);
-        _fireDirection.y = (Input.GetAxis("AimVertical") > 0 ? 1 :
-                            Input.GetAxis("AimVertical") < 0 ? -1 : 0);
+        _fireDirection.x = (GenericInput.GetAxis(GenericAxis.RX) > 0 ? 1 :
+                            GenericInput.GetAxis(GenericAxis.RX) < 0 ? -1 : 0);
+        _fireDirection.y = (GenericInput.GetAxis(GenericAxis.RY) > 0 ? 1 :
+                            GenericInput.GetAxis(GenericAxis.RY) < 0 ? -1 : 0);
 	}
 
     IEnumerator FireWeapon()

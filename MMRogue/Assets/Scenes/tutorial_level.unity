@@ -1586,7 +1586,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -2.08999991
+  near clip plane: .00999999978
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -1605,7 +1605,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 135792775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalPosition: {x: 0, y: 3.49077225, z: -9.27134037}
   m_LocalScale: {x: .93749994, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3452,7 +3452,7 @@ MonoBehaviour:
   m_Name: 
   spawnPoint: {fileID: 697625180}
   killBoundary: {fileID: 1594766090}
-  playerPrefab: {fileID: 400000, guid: 5bce156d466f66c419239ef32546d07a, type: 2}
+  playerPrefab: {fileID: 400000, guid: b2d15211b873ef24da5ea835fdcea2fa, type: 2}
   player: {fileID: 100000, guid: b2d15211b873ef24da5ea835fdcea2fa, type: 2}
 --- !u!1 &326880874
 GameObject:

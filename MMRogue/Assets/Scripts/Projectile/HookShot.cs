@@ -14,12 +14,14 @@ public class HookShot : MonoBehaviour {
     private Vector2 _point;
     private PlayerPhysics _physics;
     private bool _hooked = false;
+    private LineRenderer _hookLine;
 
     void Awake()
     {
+        _hookLine = GetComponentInChildren<LineRenderer>();
         _timeBorn = Time.time;
-                    _player = GameObject.FindGameObjectWithTag("Player");
-                    _physics = _player.GetComponent<PlayerPhysics>();
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _physics = _player.GetComponent<PlayerPhysics>();
     }
 	
 	// Update is called once per frame
@@ -42,20 +44,25 @@ public class HookShot : MonoBehaviour {
 
         if (Time.time - _timeBorn >= _timeAlive && _hooked == false)
         {
-            DestroyImmediate(gameObject);
+            Destroy(gameObject);
         }
 
         if (GenericInput.GetButtonDown(GenericButton.O) && _hooked == true)
         {
-            DestroyImmediate(gameObject);
+            Destroy(gameObject);
             _hooked = false;
             _player.GetComponent<PlayerController>()._canMove = true;
             _physics.grounded = true;
         }
 
+        _hookLine.SetPosition(0, _player.transform.position + new Vector3(0,1,0));
+        _hookLine.SetPosition(1, transform.position);
 
         if (_hooked)
+        {
             PullPlayerToMe();
+            //Debug.Break();
+        }
 	}
 
     void PullPlayerToMe()

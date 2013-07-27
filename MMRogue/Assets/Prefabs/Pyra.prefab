@@ -363,8 +363,8 @@ MonoBehaviour:
   m_Name: 
   myProjectile: {fileID: 400000, guid: d9bc8d1411b38e246bab85fd4009a3d1, type: 2}
   timeBetweenShots: .25
-  angleOfFire: 90
-  numProjectiles: 5
+  angleOfFire: 360
+  numProjectiles: 100
   BL: {fileID: 400008}
   BR: {fileID: 400016}
   CL: {fileID: 400006}

@@ -66,7 +66,7 @@ PlayerSettings:
     16:10: 0
     16:9: 1
     Others: 0
-  iPhoneBundleIdentifier: tv.ouya.demo.OuyaUnityApplication
+  iPhoneBundleIdentifier: tv.ouya.demo.DemoUnityApplication
   iPhoneBundleVersion: 1.0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16

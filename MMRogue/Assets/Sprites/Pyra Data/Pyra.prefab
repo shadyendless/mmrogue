@@ -37,7 +37,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d546f34a90531a14eaba82a43b05b86b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
   version: 3
   materialIdsValid: 1
   needMaterialInstance: 0
@@ -328,7 +327,7 @@ MonoBehaviour:
   loadable: 0
   invOrthoSize: .100000001
   halfTargetHeight: 320
-  buildKey: 421475449
+  buildKey: 367246367
   dataGuid: 07a696a402471d941bdd94e9be3dcf35
   managedSpriteCollection: 0
   hasPlatformData: 0

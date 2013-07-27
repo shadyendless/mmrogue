@@ -58,8 +58,6 @@ public class HookShot : MonoBehaviour {
         _hookLine.SetPosition(0, _player.transform.position + new Vector3(0,1,0));
         _hookLine.SetPosition(1, transform.position);
 
-        Debug.Log(_hookLine.transform.position);
-
         if (_hooked)
         {
             PullPlayerToMe();

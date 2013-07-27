@@ -43,7 +43,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84c7a4b4ee15890498f818262bca0312, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
   textures: []
   textureRefs: []
   spriteSheets: []

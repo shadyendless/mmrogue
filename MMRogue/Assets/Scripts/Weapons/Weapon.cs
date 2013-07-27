@@ -22,7 +22,8 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
-        _angleBetweenProjectiles = angleOfFire / (numProjectiles - 1);
+        if (numProjectiles == 1) _angleBetweenProjectiles = 0.0f;
+        else _angleBetweenProjectiles = angleOfFire / (numProjectiles - 1);
         _fireRotations = new Dictionary<Vector2, Transform>();
         _fireRotations.Add(new Vector2( 1, -1), BR);
         _fireRotations.Add(new Vector2( 1,  0), CR);

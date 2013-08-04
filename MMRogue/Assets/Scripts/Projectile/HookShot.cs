@@ -38,7 +38,7 @@ public class HookShot : MonoBehaviour {
         {
             _point =_hit.transform.position;
             _hooked = true;;
-            _player.GetComponent<PlayerController>()._canMove = false;
+            _player.GetComponent<PlayerController>().canMove = false;
             //DestroyImmediate(gameObject);
         }
 
@@ -51,7 +51,7 @@ public class HookShot : MonoBehaviour {
         {
             Destroy(gameObject);
             _hooked = false;
-            _player.GetComponent<PlayerController>()._canMove = true;
+            _player.GetComponent<PlayerController>().canMove = true;
             _physics.grounded = true;
         }
 
@@ -61,7 +61,7 @@ public class HookShot : MonoBehaviour {
         if (_hooked)
         {
             PullPlayerToMe();
-            //Debug.Break();
+            _player.GetComponent<PlayerController>()._amountToMove.y = 0;
         }
 	}
 
